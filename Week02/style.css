@@ -1,0 +1,290 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 2px;
+  box-sizing: border-box;
+}
+
+body {
+  animation: background 6s infinite ease-in-out;
+}
+
+ul {
+  list-style: none;
+}
+
+h3 {
+  background-color: darkblue;
+  color: aliceblue;
+  border-radius: 15px;
+  padding: 5px;
+  margin: 5px;
+  box-shadow: 0 0 10px rgb(140, 40, 226);
+}
+#grid-floats {
+  padding: 15px;
+}
+.grid-item {
+  text-align: center;
+}
+/*-------------------------MOBILE VIEW-------------------------------*/
+@media (max-width: 768px) and (min-width: 280px) {
+  #grid-floats li:first-child {
+    width: 100%;
+    height: 310px;
+    background-color: #aae2ea;
+  }
+
+  #grid-floats .grid-item {
+    height: 440px;
+  }
+
+  .grid-item {
+    width: 45.5%;
+  }
+
+  .grid-item img {
+    width: 50%;
+  }
+
+  @keyframes mymove {
+    0% {
+      top: 0px;
+      background: red;
+      width: 55%;
+      left: 5%;
+    }
+    50% {
+      background: yellow;
+      width: 80%;
+      left: 20%;
+    }
+
+    100% {
+      background: orange;
+      width: 55%;
+      left: 5%;
+    }
+  }
+
+  h1 {
+    font-size: 1.75rem;
+    width: 75px;
+    margin-top: 20px;
+    margin-bottom: 15px;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+  }
+}
+/*-------------------------TABLET VIEW-------------------------------*/
+@media (min-width: 769px) and (max-width: 1023px) {
+  #grid-floats li:first-child,
+  #grid-floats li:nth-child(2) {
+    width: 47%;
+    height: 270px;
+    margin: 5px;
+    background-color: #aae2ea;
+  }
+  #grid-floats .grid-item {
+    height: 325px;
+  }
+  .grid-item {
+    width: 31%;
+  }
+
+  .grid-item img {
+    width: 48%;
+  }
+
+  @keyframes mymove {
+    0% {
+      top: 0px;
+      background: red;
+      width: 30%;
+      left: 5%;
+    }
+    50% {
+      background: yellow;
+      width: 80%;
+      left: 30%;
+    }
+
+    100% {
+      background: orange;
+      width: 30%;
+      left: 5%;
+    }
+  }
+
+  h1 {
+    font-size: 2rem;
+    width: 95px;
+    margin-top: 40px;
+    margin-bottom: 30px;
+  }
+}
+
+/*---------------------------DESKTOP VIEW-------------------------------*/
+@media (min-width: 1024px) {
+  #grid-floats li:first-child {
+    width: 48%;
+    background-color: #aae2ea;
+  }
+  #grid-floats .grid-item {
+    height: 400px;
+  }
+  .grid-item {
+    width: 23.5%;
+  }
+
+  .grid-item img {
+    width: 60%;
+  }
+
+  @keyframes mymove {
+    0% {
+      top: 0px;
+      background: red;
+      width: 30%;
+      left: 5%;
+    }
+    50% {
+      background: yellow;
+      width: 100%;
+      left: 30%;
+    }
+
+    100% {
+      background: orange;
+      width: 30%;
+      left: 5%;
+    }
+  }
+
+  h1 {
+    font-size: 3rem;
+    width: 140px;
+    margin-bottom: 40px;
+    margin-top: 50px;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+}
+/*-----------------------------------------------------------------------*/
+.grid-item {
+  float: left;
+  box-sizing: border-box;
+  background-color: rgb(230, 243, 245);
+  margin: 5px;
+  border-radius: 4%;
+  border: 1px groove rgb(170, 168, 168);
+}
+
+/*---------------------------Hover------------------------------------------*/
+.grid-item:hover {
+  transform: scale(1.125);
+  background: rgb(231, 221, 236);
+  font-weight: 600;
+  transition: 0.6s;
+  box-shadow: rgba(0, 0, 0, 2.96) 0px 22px 70px 4px;
+  border: 2px groove black;
+  pointer-events: painted;
+}
+
+/*--------------------------------------------------------------------------*/
+#grid-flex {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+/*--------------------Animation for heading & background--------------------*/
+h2 {
+  width: 100%;
+  display: inline-block;
+  position: relative;
+  animation: mymove 5s;
+  animation-iteration-count: infinite;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  padding: 5px;
+}
+
+@keyframes background {
+  0% {
+    background: #aec1c1;
+  }
+  20% {
+    background: #adedb3;
+  }
+  40% {
+    background: #dce1bc;
+  }
+  60% {
+    background: #edbfc0;
+  }
+  80% {
+    background: #ceb0e8;
+  }
+  100% {
+    background: #aec1c1;
+  }
+}
+
+@keyframes heading {
+  0% {
+    transform: rotate(0deg);
+    left: 10%;
+    background: blue;
+    color: white;
+  }
+  4% {
+    scale: 1.2;
+    background: blue;
+    color: white;
+  }
+  8% {
+    scale: 1;
+    color: aliceblue;
+  }
+  25% {
+    transform: rotate(20deg);
+    left: 10%;
+    color: white;
+  }
+  50% {
+    transform: rotate(0deg);
+    left: 80%;
+    color: black;
+  }
+  55% {
+    transform: rotate(0deg);
+    left: 80%;
+    color: black;
+  }
+  70% {
+    transform: rotate(0deg);
+    left: 80%;
+    background: #1ec7e6;
+    color: black;
+  }
+  100% {
+    transform: rotate(-360deg);
+    left: 10%;
+    background: blue;
+  }
+}
+
+h1 {
+  position: relative;
+  display: block;
+  animation: heading 10s;
+  animation-iteration-count: infinite;
+}
