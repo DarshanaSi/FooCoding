@@ -1,4 +1,4 @@
-# HTML5-CSS3
+# HTML5-CSS3 & JavaScript
 HTML &amp; CSS assignments of FooCoding
 
 Please find the link to CV:
