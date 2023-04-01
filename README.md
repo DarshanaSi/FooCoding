@@ -9,3 +9,6 @@ https://darshanasi.github.io/FooCoding/Week02/
 
 Please find the link to "Web-Clone":
 https://darshanasi.github.io/FooCoding/Week03/
+
+Please find the link to "Book App":
+https://darshanasi.github.io/FooCoding/JavaScript2/Week01/
