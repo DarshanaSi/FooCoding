@@ -173,6 +173,7 @@
       const li = document.getElementById(`book_${i}`);
       const img = document.createElement("img");
       img.src = bookThumbnails[keys[i]].source;
+      img.setAttribute("alt", books[bookTitles[i]]["title"]);
       li.appendChild(img);
     }
   }
