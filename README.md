@@ -2,10 +2,13 @@
 <h3 align="center">Find my assignments of FooCoding class M11</h3>
 Please find the link to CV:
 https://darshanasi.github.io/FooCoding/Week01/
+
 Please find the link to "grid":
 https://darshanasi.github.io/FooCoding/Week02/
+
 Please find the link to "Web-Clone":
 https://darshanasi.github.io/FooCoding/Week03/
+
 Please find the link to "Book App":
 https://darshanasi.github.io/FooCoding/JavaScript2/Week01/
 
