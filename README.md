@@ -1,6 +1,5 @@
-# HTML5, CSS3, JavaScript, Node.js, Databases
-Assignments of FooCoding
-
+<h1 align="center">Hi 👋, I'm Darshana Sirisena</h1>
+<h3 align="center">Find my assignments of FooCoding class M11</h3>
 Please find the link to CV:
 https://darshanasi.github.io/FooCoding/Week01/
 
@@ -13,10 +12,6 @@ https://darshanasi.github.io/FooCoding/Week03/
 Please find the link to "Book App":
 https://darshanasi.github.io/FooCoding/JavaScript2/Week01/
 
-<h1 align="center">Hi 👋, I'm Darshana Sirisena</h1>
-<h3 align="center">Find my assignments of FooCoding class M11</h3>
-
-<h3 align="left">Connect with me:</h3>
 <p align="left">
 </p>
 
