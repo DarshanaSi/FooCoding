@@ -192,7 +192,7 @@ app.patch("/lists/:listId/items/:itemId", async (req, res) => {
   }
 });
 
-// Add a reminder for an item
+// Add a reminder for an "LIST"
 app.post("/lists/:listId/items/:itemId/reminders", async (req, res) => {
   const { listId, itemId } = req.params;
   const { reminderDate, userId } = req.body;
@@ -215,7 +215,7 @@ app.post("/lists/:listId/items/:itemId/reminders", async (req, res) => {
 
     // Add the reminder to the database
     await connection.query(
-      "INSERT INTO Reminders (item_id, reminder_date) VALUES (?, ?)",
+      "INSERT INTO Reminders (list_id, reminder_date) VALUES (?, ?)",
       [itemId, reminderDate]
     );
 
