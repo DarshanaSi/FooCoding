@@ -150,6 +150,29 @@ app.post("/lists/:listId/reminders", async (req, res) => {
   }
 });
 
+// Scheduled task to delete completed tasks older than 30 days
+cron.schedule("0 0 * * *", async () => {
+  try {
+    const connection = await pool.getConnection();
+
+    // Calculate the date threshold (30 days ago)
+    const dateThreshold = new Date();
+    dateThreshold.setDate(dateThreshold.getDate() - 30);
+
+    // Delete completed tasks older than the date threshold
+    await connection.query(
+      "DELETE FROM Items WHERE is_completed = TRUE AND completed_at < ?",
+      [dateThreshold]
+    );
+
+    connection.release();
+
+    console.log("Completed tasks older than 30 days have been deleted.");
+  } catch (error) {
+    console.error(error);
+  }
+});
+
 // ...
 
 // Start the server
