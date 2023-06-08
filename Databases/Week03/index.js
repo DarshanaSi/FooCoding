@@ -15,12 +15,6 @@ const pool = mysql.createPool({
 const app = express();
 app.use(express.json());
 
-// Error handling middleware
-app.use((err, req, res, next) => {
-  console.error(err);
-  res.status(500).json({ error: "Internal server error" });
-});
-
 // Create a new user account
 app.post("/users", async (req, res) => {
   const { username, password } = req.body;
@@ -189,6 +183,11 @@ app.post("/lists/:listId/items/:itemId/reminders", async (req, res) => {
   }
 });
 
+// Error handling middleware
+app.use((err, req, res, next) => {
+  console.error(err);
+  res.status(500).json({ error: "Internal server error" });
+});
 // Scheduled task to delete completed tasks older than 30 days
 cron.schedule("0 0 * * *", async () => {
   try {
