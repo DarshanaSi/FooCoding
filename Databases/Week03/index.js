@@ -215,8 +215,8 @@ app.post("/lists/:listId/items/:itemId/reminders", async (req, res) => {
 
     // Add the reminder to the database
     await connection.query(
-      "INSERT INTO Reminders (list_id, item_id, reminder_date) VALUES (?, ?, ?)",
-      [listId, itemId, reminderDate]
+      "INSERT INTO Reminders (item_id, reminder_date) VALUES (?, ?)",
+      [itemId, reminderDate]
     );
 
     connection.release();
