@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/DarshanaSi/FooCoding#readme",
   "dependencies": {
-    "cron": "^2.3.1"
+    "cron": "^2.3.1",
+    "node-cron": "^3.0.2"
   }
 }

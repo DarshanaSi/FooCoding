@@ -1,46 +1,46 @@
 -- Create the database
 CREATE DATABASE todo;
 
--- Change database
-USE todo;
-
--- Create the Lists table
-CREATE TABLE Lists (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  name VARCHAR(255) NOT NULL,
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+CREATE TABLE Users (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  username VARCHAR(255) NOT NULL,
+  password VARCHAR(255) NOT NULL
 );
 
--- Create the Items table
+CREATE TABLE Lists (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  user_id INT NOT NULL,
+  name VARCHAR(255) NOT NULL,
+  FOREIGN KEY (user_id) REFERENCES Users(id) ON DELETE CASCADE
+);
+
 CREATE TABLE Items (
-  id INT AUTO_INCREMENT PRIMARY KEY,
+  id INT PRIMARY KEY AUTO_INCREMENT,
   list_id INT NOT NULL,
   title VARCHAR(255) NOT NULL,
   description TEXT,
   is_completed BOOLEAN DEFAULT FALSE,
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  FOREIGN KEY (list_id) REFERENCES Lists(id)
+  completed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (list_id) REFERENCES Lists(id) ON DELETE CASCADE
 );
 
--- Create the Tags table
 CREATE TABLE Tags (
-  id INT AUTO_INCREMENT PRIMARY KEY,
+  id INT PRIMARY KEY AUTO_INCREMENT,
   name VARCHAR(255) NOT NULL
 );
 
--- Create the Item_Tags junction table
 CREATE TABLE Item_Tags (
   item_id INT NOT NULL,
   tag_id INT NOT NULL,
   PRIMARY KEY (item_id, tag_id),
-  FOREIGN KEY (item_id) REFERENCES Items(id),
-  FOREIGN KEY (tag_id) REFERENCES Tags(id)
+  FOREIGN KEY (item_id) REFERENCES Items(id) ON DELETE CASCADE,
+  FOREIGN KEY (tag_id) REFERENCES Tags(id) ON DELETE CASCADE
 );
 
--- Create the Reminders table
 CREATE TABLE Reminders (
-  id INT AUTO_INCREMENT PRIMARY KEY,
+  id INT PRIMARY KEY AUTO_INCREMENT,
   item_id INT NOT NULL,
-  reminder_date DATE NOT NULL,
-  FOREIGN KEY (item_id) REFERENCES Items(id)
+  reminder_date TIMESTAMP NOT NULL,
+  FOREIGN KEY (item_id) REFERENCES Items(id) ON DELETE CASCADE
 );
+
