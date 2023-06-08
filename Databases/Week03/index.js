@@ -48,10 +48,44 @@ app.post("/users", async (req, res) => {
   }
 });
 
+// Create a new list
+app.post("/lists", async (req, res) => {
+  const { userId, name } = req.body;
+
+  try {
+    const connection = await pool.getConnection();
+
+    // Check if the user exists
+    const [user] = await connection.query("SELECT * FROM Users WHERE id = ?", [
+      userId,
+    ]);
+
+    if (!user) {
+      connection.release();
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    // Insert the new list into the database
+    const [result] = await connection.query(
+      "INSERT INTO Lists (user_id, name, created_at) VALUES (?, ?, CURRENT_TIMESTAMP)",
+      [userId, name]
+    );
+
+    const listId = result.insertId;
+
+    connection.release();
+
+    res.status(201).json({ message: "List created successfully", listId });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
 // Insert item(s) in ToDo list
 app.post("/lists/:listId/items", async (req, res) => {
   const { listId } = req.params;
-  const { title, description, userId, remainder } = req.body;
+  const { title, description, userId } = req.body;
 
   try {
     const connection = await pool.getConnection();
@@ -71,8 +105,8 @@ app.post("/lists/:listId/items", async (req, res) => {
 
     // Insert the new item into the database
     const [result] = await connection.query(
-      "INSERT INTO Items (list_id, title, description, remainder) VALUES (?, ?, ?, ?)",
-      [listId, title, description, remainder]
+      "INSERT INTO Items (list_id, title, description) VALUES (?, ?, ?)",
+      [listId, title, description]
     );
 
     const itemId = result.insertId;
@@ -146,7 +180,7 @@ app.patch("/lists/:listId/items/:itemId", async (req, res) => {
     // Update the completion status of the item in the database
     await connection.query(
       "UPDATE Items SET is_completed = ? WHERE list_id = ? AND id = ?",
-      [isCompleted, listId, itemId]
+      [isCompleted ? 1 : 0, listId, itemId]
     );
 
     connection.release();
