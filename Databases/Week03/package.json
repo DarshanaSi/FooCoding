@@ -1,0 +1,22 @@
+{
+  "name": "foocoding-1",
+  "version": "1.0.0",
+  "description": "ToDo application - Database/Week03",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DarshanaSi/FooCoding.git"
+  },
+  "author": "Darshana Sirisena",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DarshanaSi/FooCoding/issues"
+  },
+  "homepage": "https://github.com/DarshanaSi/FooCoding#readme",
+  "dependencies": {
+    "cron": "^2.3.1"
+  }
+}
