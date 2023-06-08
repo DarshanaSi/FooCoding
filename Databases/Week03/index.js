@@ -19,20 +19,31 @@ app.use(express.json());
 app.post("/users", async (req, res) => {
   const { username, password } = req.body;
 
+  if (!username || !password) {
+    return res
+      .status(400)
+      .json({ error: "Username and password are required" });
+  }
+
   try {
     const connection = await pool.getConnection();
 
     // Insert the new user into the database
-    await connection.query(
+    const [result] = await connection.query(
       "INSERT INTO Users (username, password) VALUES (?, ?)",
       [username, password]
     );
 
     connection.release();
 
-    res.status(201).json({ message: "User created successfully" });
+    if (result.affectedRows === 1) {
+      return res.status(201).json({ message: "User created successfully" });
+    } else {
+      console.error("User creation failed. No rows affected.");
+      return res.status(500).json({ error: "User creation failed" });
+    }
   } catch (error) {
-    console.error(error);
+    console.error("User creation failed:", error);
     res.status(500).json({ error: "Internal server error" });
   }
 });
