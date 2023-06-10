@@ -4,7 +4,7 @@ const cron = require("node-cron");
 
 // Create a MySQL connection pool
 const pool = mysql.createPool({
-  host: "https://todo-app-nu-ivory.vercel.app/",
+  host: "localhost",
   user: "root",
   password: "darshana",
   database: "todo",
