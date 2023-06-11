@@ -82,7 +82,7 @@ app.post("/lists", async (req, res) => {
   }
 });
 
-// Insert item(s) in ToDo list
+// Insert items in ToDo list
 app.post("/lists/:listId/items", async (req, res) => {
   const { listId } = req.params;
   const { title, description, userId } = req.body;
@@ -120,7 +120,7 @@ app.post("/lists/:listId/items", async (req, res) => {
   }
 });
 
-// Delete item(s) in ToDo list
+// Delete items in ToDo list
 app.delete("/lists/:listId/items/:itemId", async (req, res) => {
   const { listId, itemId } = req.params;
   const { userId } = req.body;
