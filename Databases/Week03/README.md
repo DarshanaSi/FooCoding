@@ -2,7 +2,11 @@
 
 This is a simple Todo app implemented using Node.js and MySQL. It allows users to create user accounts, manage lists, add items to lists, mark items as completed, and set reminders for lists.
 
+<<<<<<< HEAD
 The Todo app is deployed and can be accessed at [Localhost😬](localhost).
+=======
+The Todo app is deployed and can be accessed at [localhost😬](localhost).
+>>>>>>> 765686c245da7a6cd46eafc6634c67ac7ccc09ad
 
 ## API Endpoints
 
